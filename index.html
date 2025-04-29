@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Notre Mariage</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="content">
+        <h1>Bienvenue à notre mariage</h1>
+        <img src="images/couple.jpg" alt="Les mariés" class="couple-photo">
+        <div id="countdown" class="countdown"></div>
+    </div>
+    <div class="footer-links">
+        <a class="btn" href="menu.html">Voir le menu</a>
+        <a class="btn" href="lieu.html">Lieu du dîner</a>
+        <a class="btn" href="wedshoots.html">Galerie Wedshoots</a>
+        <a class="btn" href="cagnotte.html">Cagnotte Galerie Lafayette</a>
+    </div>
+    <script>
+        const weddingDate = new Date("2025-06-21T00:00:00");
+        const countdownEl = document.getElementById('countdown');
+        function updateCountdown() {
+            const now = new Date();
+            const diff = weddingDate - now;
+            if (diff <= 0) {
+                countdownEl.innerHTML = "<p>Le grand jour est arrivé !</p>";
+                return;
+            }
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
+            countdownEl.innerHTML = `<p>J - ${days} : ${hours}h ${minutes}m ${seconds}s</p>`;
+        }
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
